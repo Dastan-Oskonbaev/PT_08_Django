@@ -21,3 +21,12 @@ class PlaceCategoryAdmin(admin.ModelAdmin):
             'fields': ('short_description',)
         }),
     )
+
+
+@admin.register(Place)
+class PlaceAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'category', 'views_count', 'created_at')
+    search_fields = ('name', 'category__name')
+    list_filter = ('name', 'category__name', 'id')
+    list_display_links = ('id', 'name')
+    ordering = ('-id',)
