@@ -1,16 +1,10 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 
 
 def hello_view(request):
-    return HttpResponse("Hello, world!")
+    return render(request, 'index.html')
 
 
 def goodbye_view(request):
-    html = ("<html>"
-            "<body>"
-            "<h1>"
-            "Goodbye, world!"
-            "</h1>"
-            "</body>"
-            "</html>")
-    return HttpResponse(html, status=200)
+    return render(request, 'generic.html')
