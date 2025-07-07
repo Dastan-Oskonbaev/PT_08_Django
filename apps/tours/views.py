@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from apps.tours.forms import PlaceCategoryForm
+from apps.tours.forms import PlaceCategoryForm, ReviewForm
 from apps.tours.models import PlaceCategory, Place
 
 
@@ -31,3 +31,16 @@ def create_category(request):
     else:
         form = PlaceCategoryForm()
         return render(request, 'create_category.html', {'form': form})
+
+
+def create_review(request):
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('category_list')
+        else:
+            return render(request, 'create_review.html', {'form': form})
+    else:
+        form = ReviewForm()
+        return render(request, 'create_review.html', {'form': form})
