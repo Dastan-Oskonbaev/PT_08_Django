@@ -1,9 +1,9 @@
 from django.contrib import admin
 
-from apps.tours.models import PlaceCategory, Place
+from apps.tours.models import PlaceCategory, Place, Review
 
 # admin.site.register(PlaceCategory)
-# admin.site.register(Place)
+admin.site.register(Review)
 
 @admin.register(PlaceCategory)
 class PlaceCategoryAdmin(admin.ModelAdmin):
@@ -30,3 +30,6 @@ class PlaceAdmin(admin.ModelAdmin):
     list_filter = ('name', 'category__name', 'id')
     list_display_links = ('id', 'name')
     ordering = ('-id',)
+
+
+
