@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import user_passes_test, login_required
 from django.shortcuts import render, redirect
 
 from apps.tours.forms import PlaceCategoryForm, ReviewForm
@@ -7,11 +8,14 @@ from apps.tours.models import PlaceCategory, Place
 def hello_view(request):
     return render(request, 'index.html')
 
+def is_staff_check(user):
+    return user.is_staff
 
+@user_passes_test(is_staff_check, login_url='login')
 def goodbye_view(request):
     return render(request, 'elements.html')
 
-
+@login_required
 def category_list(request):
     categories = PlaceCategory.objects.all()
     places = Place.objects.all()

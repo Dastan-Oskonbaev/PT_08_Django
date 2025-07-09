@@ -1,0 +1,21 @@
+
+<form method="post">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Submit">
+</form>
+
+{% if form.errors %}
+<p>Some errors occurred:</p>
+<ul>
+{% for field in form %}
+    {% csrf_token %}
+{% for error in field.errors %}
+    {% csrf_token %}
+<li>{{ error }}</li>
+{% endfor %}
+{% endfor %}
+    {% endif %}
+</ul>
+
+<p>New user? <a href="{% url 'register' %}">Sign Up</a></p>

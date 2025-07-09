@@ -24,6 +24,9 @@
 							<li><a href="{% url 'index_view' %}" >This is Massively</a></li>
 							<li><a href="{% url 'category_list' %}">Generic Page</a></li>
 							<li class="active"><a href="{% url 'elements_view' %}">Elements Reference</a></li>
+								{% if user.is_authenticated %}
+							<li class="active"><a href="{% url 'logout' %}">logout</a></li>
+							{% endif %}
 						</ul>
 						<ul class="icons">
 							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
