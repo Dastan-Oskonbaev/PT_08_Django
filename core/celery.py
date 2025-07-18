@@ -18,10 +18,15 @@ app.autodiscover_tasks()
 
 
 app.conf.beat_schedule = {
-    'send-email-message': {
+    'bla-bla-bla': {
         'task': 'apps.users.tasks.send_email_task',
         # 'schedule': 1.0, Это каждую секунду
-        'schedule': crontab(hour=19, minute=58),
+        'schedule': crontab(hour=1, minute=1),
+        'kwargs': {}
+    },
+    'bla-bla-bla-2': {
+        'task': 'apps.users.tasks.send_tg_message_crontab',
+        'schedule': 10.0,
         'kwargs': {}
     }
 }
